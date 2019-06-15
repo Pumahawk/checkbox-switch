@@ -1,0 +1,58 @@
+@import 'config';
+
+%sw {
+  display: inline-block;
+  position: relative;
+  input[type=checkbox] {
+    display:none;
+    &:checked ~ .button {
+      left: 60%;
+      right: 10%;
+    }
+  }
+  .button {
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    left: 10%;
+    right: 60%;
+    transition: all .4s;
+    background: white;
+  }
+  .background {
+    transition: all .4s;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@each $name, $dim in dim() {
+  %sw-dim-#{$name} {
+    width: $dim;
+    height: $dim;
+  }
+}
+
+
+@each $name, $colors in col() {
+  %sw-col-#{$name} {
+    @extend %sw;
+    input[type=checkbox] {
+      &:checked ~ .background {
+        background: nth($colors, 2);
+      }
+    }
+    .background {
+      background: nth($colors, 1);
+    }
+  }
+}
+
+@each $named, $dim in dim() {
+  @each $namec, $cols in col(){
+    .sw-#{$named}-#{$namec} {
+      @extend %sw-dim-#{$named};
+      @extend %sw-col-#{$namec};
+    }
+  }
+}

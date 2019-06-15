@@ -1,0 +1,19 @@
+$settings: (
+  dimension: (
+    s: 25px,
+    m: 50px,
+    l: 100px,
+  ),
+  colors: (
+    def: [red, green],
+    dark: [#810d0d, #0d8130],
+    blue: [#4842c8, #5cd3e8]
+  ),
+);
+
+@function dim() {
+  @return map-get($settings, dimension);
+}
+@function col() {
+  @return map-get($settings, colors);
+}
