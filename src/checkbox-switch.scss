@@ -6,18 +6,19 @@
   input[type=checkbox] {
     display:none;
     &:checked ~ .button {
-      left: 60%;
-      right: 10%;
+      left: 51%;
+      right: 6%;
     }
   }
   .button {
     position: absolute;
     top: 10%;
     bottom: 10%;
-    left: 10%;
-    right: 60%;
+    left: 6%;
+    right: 51%;
     transition: all .4s;
     background: white;
+    border-radius: 50%;
   }
   .background {
     transition: all .4s;
@@ -29,7 +30,10 @@
 @each $name, $dim in dim() {
   %sw-dim-#{$name} {
     width: $dim;
-    height: $dim;
+    height: $dim/2;
+    .background {
+      border-radius: $dim;
+    }
   }
 }
 
