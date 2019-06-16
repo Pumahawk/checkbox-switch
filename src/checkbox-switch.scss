@@ -3,6 +3,7 @@
 %sw {
   display: inline-block;
   position: relative;
+  cursor: pointer;
   input[type=checkbox] {
     display:none;
     &:checked ~ .button {
